@@ -4,8 +4,8 @@
   --ink: #1d2126;
   --muted: #5b636d;
   --rule: #e4e1da;
-  --accent: #1f5f6b;
-  --accent-soft: #e6f0f1;
+  --accent: #c2410c;
+  --accent-soft: #fdeee2;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -18,8 +18,8 @@
     --ink: #e6e8ea;
     --muted: #a0a8b1;
     --rule: #2c3238;
-    --accent: #7cc3cf;
-    --accent-soft: #1d3136;
+    --accent: #fb923c;
+    --accent-soft: #3a2417;
   }
 }
 
@@ -57,9 +57,50 @@ code {
 
 /* Header */
 .site-header {
-  padding: 4rem 0 1.5rem;
+  padding: 0 0 1.5rem;
   border-bottom: 1px solid var(--rule);
 }
+.banner {
+  position: relative;
+  margin: 0;
+  height: clamp(170px, 30vw, 340px);
+  overflow: hidden;
+  background: #8fa9d6;
+}
+.banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+.banner figcaption {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.intro {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+.headshot {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 124px;
+  height: 124px;
+  margin-top: -62px;
+  border-radius: 50%;
+  border: 4px solid var(--bg);
+  object-fit: cover;
+  background: var(--surface);
+}
+.intro > div { padding-bottom: 0.2rem; min-width: 0; }
 .site-header h1 {
   margin: 0;
   font-size: clamp(2rem, 6vw, 2.75rem);
@@ -236,7 +277,8 @@ section p { margin: 0 0 1rem; }
 
 @media (max-width: 560px) {
   body { font-size: 1rem; }
-  .site-header { padding-top: 2.5rem; }
+  .intro { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .headshot { width: 104px; height: 104px; margin-top: -52px; }
   .timeline, .facts { grid-template-columns: 1fr; }
   .timeline dt { padding-top: 0; }
   .timeline dd { margin-bottom: 1.25rem; }
