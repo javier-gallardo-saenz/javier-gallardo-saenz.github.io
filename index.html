@@ -118,18 +118,30 @@
       <p class="kicker">MSc thesis · KTH &amp; TU Delft · AstraZeneca Molecular AI · 2026</p>
       <h3>Molecular-dynamics-assisted hierarchical machine learning for modified siRNA activity prediction</h3>
       <p class="meta">Supervisors: Emilie Gerard, Marco Klähn, Olof Runborg · Awarded the highest grade</p>
+      <p>Can the gene-silencing activity of a chemically modified siRNA be predicted from simulations of its short
+        building blocks? I built both the simulation infrastructure and the models to test this. The resulting
+        hierarchical model clearly outperforms the best previously available model for this task.</p>
       <ul>
-        <li>Curated a dataset of more than 88,000 experimentally characterized chemically modified siRNAs, and built an
-          automated fragmentation pipeline that maps each modified nucleotide to force-field parametrizations (modXNA).</li>
-        <li>Built a high-throughput molecular dynamics pipeline (GROMACS, AMBER force fields) for ~6,000 modified
-          trimers. It extracts structural and dynamical descriptors such as helical parameters, sugar puckers,
-          hydrogen bonds and interaction energies.</li>
-        <li>Framed activity prediction as learning on a <em>graph of graphs</em>, and proved that standard
-          message-passing networks suffer exponential over-squashing on siRNA duplexes, even when hydrogen bonds and
-          base stacking are encoded as edges.</li>
-        <li>Introduced modular, <em>airtight</em> hierarchical architectures that combine atom, nucleotide, trimer and
-          molecule levels. On a generalization-oriented split they clearly outperform the previous best baseline, and
-          ablations show that the MD-derived features contribute measurably.</li>
+        <li><strong>Fragmentation and MD workflow.</strong> I designed and built an end-to-end, incremental workflow
+          from siRNA sequences to MD features. It starts with an automated fragmentation procedure that splits each
+          modified nucleotide into backbone, sugar and base fragments. It then matches these against the modXNA
+          parametrization catalogue to find the unique trimers that can be simulated, across a dataset of more than
+          88,000 experimentally measured siRNAs. Next, the workflow prepares and runs the GROMACS simulations and
+          extracts descriptors such as helical parameters, sugar puckers, hydrogen bonds and interaction energies.
+          It produced a new dataset of MD-derived properties for nearly 6,000 modified trimers. As new siRNAs arrive,
+          only previously unseen trimers are simulated.</li>
+        <li><strong>Multi-cluster scheduling.</strong> The workflow includes a scheduler that treats job allocation as
+          a mixed-integer linear program. It distributes about 29,000 simulations across heterogeneous CPU and GPU
+          SLURM partitions on two clusters, in Sweden and the US, to minimize total wall-clock time, and it
+          re-optimizes when compute availability changes. Other departments at AstraZeneca now use the workflow.</li>
+        <li><strong>Theory.</strong> I framed activity prediction as learning on a <em>graph of graphs</em>. I then
+          proved that standard message-passing networks suffer exponential over-squashing on siRNA duplexes, even when
+          hydrogen bonds and base stacking are encoded as edges.</li>
+        <li><strong>Models and results.</strong> The modular, <em>airtight</em> hierarchical architectures combine
+          atom, nucleotide, trimer and molecule levels, and inject the MD features at the trimer level. On a
+          generalization-oriented split, the best model lowers the test MAE from 0.230 to 0.175 (about 24%) relative to
+          Cm-siRPred, the strongest published model, with roughly 24× fewer parameters. It also beats a tuned XGBoost
+          baseline, and ablations show that the MD-derived features contribute measurably.</li>
       </ul>
       <p class="links-inline"><a href="MasterThesis_GallardoSaenzJavier.pdf">PDF</a></p>
     </article>
@@ -161,6 +173,19 @@
     </article>
 
     <article class="project">
+      <h3><a href="PINNs_EigenvectorEmbeddings_Report.pdf">Eigenvector embeddings and spectral bias in PINNs</a></h3>
+      <p class="stack">Python · JAX · NGSolve · with A. Carraro · TU Delft, course taught by Alexander Heinlein</p>
+      <p>Studied whether adding graph-Laplacian or Laplace–Beltrami eigenfunctions to a PINN's inputs helps it solve
+        Poisson problems on non-convex domains (C-shaped, dumbbell and spiral), using finite-element solutions
+        (Netgen/NGSolve, PINVIT eigensolver) as ground truth. The embeddings gave at most modest gains. Projecting
+        the learned solutions onto the Laplace–Beltrami eigenbasis showed why: the networks consistently fail to
+        capture the lowest eigenmode. Spectral regularization, and learning only the residual of a truncated
+        eigenbasis expansion, corrected much of this error within 500 epochs. The ingredients here, namely Laplacian
+        eigenproblems, basis expansions and learned corrections to them, recur throughout electronic structure.
+        <a href="PINNs_EigenvectorEmbeddings_Report.pdf">Report</a>.</p>
+    </article>
+
+    <article class="project">
       <h3><a href="https://github.com/javier-gallardo-saenz/Hub_Laplacian_GNNs">Hub-Laplacian operators for directional GNNs</a></h3>
       <p class="stack">Python · PyTorch Geometric · QM9 · with A. Carraro and I. Heijmink (TU Delft)</p>
       <p>Integrated degree-biased graph shift operators, fixed or with learnable bias <em>α</em>, into polynomial-filter
@@ -177,14 +202,6 @@
         high-density fluids, with uncertainty estimates and tail corrections.
         <a href="https://github.com/javier-gallardo-saenz/muFE-in-LJFluid/blob/main/Project_Report.pdf">Report</a>.</p>
     </article>
-
-    <article class="project">
-      <h3><a href="https://github.com/javier-gallardo-saenz/Complex_Networks_Project">Opinion inference on complex networks</a></h3>
-      <p class="stack">Python · NetworkX</p>
-      <p>Simulates opinion dynamics on random graph models (Erdős–Rényi, Barabási–Albert, configuration, stochastic
-        block and hierarchical models) and compares methods for inferring a node's state from partial, local
-        observations of its neighborhood.</p>
-    </article>
   </section>
 
   <section id="experience">
@@ -193,8 +210,9 @@
       <dt>Jan – Aug 2026</dt>
       <dd>
         <p class="title">AstraZeneca, Molecular AI · Research intern</p>
-        <p>Hierarchical, MD-assisted ML for modified siRNA activity prediction. Built a dataset of MD-derived
-          properties for ~6,000 modified siRNA trimers (MSc thesis).</p>
+        <p>Hierarchical, MD-assisted ML for modified siRNA activity prediction (MSc thesis). Built a high-throughput,
+          multi-cluster MD workflow, now used by other departments at AstraZeneca, that produced MD-derived properties
+          for nearly 6,000 modified siRNA trimers.</p>
       </dd>
 
       <dt>Jun – Jul 2024</dt>
