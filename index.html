@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Javier Gallardo Sáenz</title>
+  <meta name="description" content="Javier Gallardo Sáenz — PhD student in Mathematics at UBC working on mathematics and machine learning for atomistic simulation and electronic structure.">
+  <meta name="author" content="Javier Gallardo Sáenz">
+  <meta property="og:title" content="Javier Gallardo Sáenz">
+  <meta property="og:description" content="PhD student in Mathematics at UBC · mathematics and machine learning for atomistic simulation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://javier-gallardo-saenz.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5f6b'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' text-anchor='middle' fill='white'%3EJG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <h1>Javier Gallardo Sáenz</h1>
+    <p class="role">PhD student in Mathematics · University of British Columbia</p>
+    <p class="tagline">Mathematics and machine learning for atomistic simulation.</p>
+    <nav class="links" aria-label="Contact and profiles">
+      <a href="mailto:jgallardosaenz@gmail.com">Email</a>
+      <a href="https://github.com/javier-gallardo-saenz">GitHub</a>
+      <a href="CV_GallardoSaenzJavier.pdf">CV (PDF)</a>
+    </nav>
+    <nav class="toc" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#theses">Theses</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a first-year PhD student in Mathematics at the University of British Columbia, supervised by
+      <a href="https://personal.math.ubc.ca/~ortner/">Christoph Ortner</a>. My research is on mathematics and
+      machine learning for atomistic simulation, and my first projects are on problems in
+      <strong>electronic structure</strong>.
+    </p>
+    <p>
+      I trained in both mathematics and physics: a dual degree in Mathematics and Engineering Physics at CFIS (UPC),
+      followed by the COSSE joint MSc in computational science at TU Delft and KTH. Since then I have worked on
+      diffusion models for protein–ligand docking (published in <em>Nature Machine Intelligence</em>),
+      molecular-dynamics-assisted hierarchical learning for siRNA therapeutics at AstraZeneca, and
+      stability theory for constrained-optimization dynamics at UC San Diego. Across these projects I build ML models
+      for molecular systems that respect the underlying physics and that I can analyze mathematically.
+    </p>
+    <ul class="tags" aria-label="Research interests">
+      <li>Electronic structure</li>
+      <li>ML for quantum chemistry</li>
+      <li>Equivariant &amp; symmetry-aware models</li>
+      <li>ML interatomic potentials</li>
+      <li>Generative models for molecules</li>
+      <li>Molecular dynamics &amp; free energies</li>
+      <li>Theory of graph neural networks</li>
+    </ul>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <dl class="timeline news">
+      <dt>Sep 2026</dt>
+      <dd><p>Started my PhD in Mathematics at UBC with
+        <a href="https://personal.math.ubc.ca/~ortner/">Christoph Ortner</a>, supported by UBC's Four Year Doctoral
+        Fellowship (4YF), which goes to top incoming PhD students.</p></dd>
+
+      <dt>Aug 2026</dt>
+      <dd><p>Defended my MSc thesis, <a href="MasterThesis_GallardoSaenzJavier.pdf"><em>Molecular-dynamics-assisted
+        hierarchical machine learning for modified siRNA activity prediction</em></a>, at KTH.</p></dd>
+
+      <dt>Jan 2026</dt>
+      <dd><p>Joined AstraZeneca's Molecular AI department as a research intern.</p></dd>
+
+      <dt>Sep 2025</dt>
+      <dd><p>Our paper on geodesic-guided protein–ligand docking was published in
+        <a href="https://doi.org/10.1038/s42256-025-01091-x"><em>Nature Machine Intelligence</em></a>.</p></dd>
+    </dl>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <ol class="pubs">
+      <li>
+        <p class="title">Informed protein–ligand docking via geodesic guidance in translational, rotational and torsional spaces</p>
+        <p class="meta">R. Miñán, <strong>J. Gallardo</strong>, Á. Ciudad, A. Molina · <em>Nature Machine Intelligence</em> 7, 2025</p>
+        <p class="links-inline"><a href="https://doi.org/10.1038/s42256-025-01091-x">Paper</a></p>
+      </li>
+      <li>
+        <p class="title">GeoDirDock: Guiding Docking Along Geodesic Paths</p>
+        <p class="meta">R. Miñán, <strong>J. Gallardo</strong>, Á. Ciudad, A. Molina · GEM Bio Workshop, ICLR 2024</p>
+        <p class="links-inline"><a href="https://arxiv.org/abs/2404.06481">arXiv</a></p>
+      </li>
+    </ol>
+    <p class="note">
+      Both papers guide the reverse process of a diffusion model along geodesics in the product of translational,
+      rotational (SO(3)) and torsional spaces. This steers blind docking toward expert-specified binding regions and
+      improves both RMSD accuracy and the physical plausibility of the predicted poses.
+    </p>
+  </section>
+
+  <section id="theses">
+    <h2>Theses</h2>
+
+    <article class="card">
+      <p class="kicker">MSc thesis · KTH &amp; TU Delft · AstraZeneca Molecular AI · 2026</p>
+      <h3>Molecular-dynamics-assisted hierarchical machine learning for modified siRNA activity prediction</h3>
+      <p class="meta">Supervisors: Emilie Gerard, Marco Klähn, Olof Runborg · Awarded the highest grade</p>
+      <ul>
+        <li>Curated a dataset of more than 88,000 experimentally characterized chemically modified siRNAs, and built an
+          automated fragmentation pipeline that maps each modified nucleotide to force-field parametrizations (modXNA).</li>
+        <li>Built a high-throughput molecular dynamics pipeline (GROMACS, AMBER force fields) for ~6,000 modified
+          trimers. It extracts structural and dynamical descriptors such as helical parameters, sugar puckers,
+          hydrogen bonds and interaction energies.</li>
+        <li>Framed activity prediction as learning on a <em>graph of graphs</em>, and proved that standard
+          message-passing networks suffer exponential over-squashing on siRNA duplexes, even when hydrogen bonds and
+          base stacking are encoded as edges.</li>
+        <li>Introduced modular, <em>airtight</em> hierarchical architectures that combine atom, nucleotide, trimer and
+          molecule levels. On a generalization-oriented split they clearly outperform the previous best baseline, and
+          ablations show that the MD-derived features contribute measurably.</li>
+      </ul>
+      <p class="links-inline"><a href="MasterThesis_GallardoSaenzJavier.pdf">PDF</a></p>
+    </article>
+
+    <article class="card">
+      <p class="kicker">BSc thesis · UPC · carried out at UC San Diego · 2024</p>
+      <h3>Extending input-to-state stability to closed sets: applications to robustness of anytime constrained optimization</h3>
+      <p class="meta">Supervisor: Jorge Cortés (UCSD) · Tutor: Carles Batlle (UPC) · Awarded the highest grade</p>
+      <ul>
+        <li>Introduced <em>Set Input-to-State Stability</em> (SISS) for flows on closed sets with compact sets of
+          equilibria, gave sufficient conditions for it to hold, and characterized how it relates to ISS and local ISS.</li>
+        <li>Proved that, under reasonable assumptions, both the continuous and the discretized Safe Gradient Flow are
+          SISS. This gives robustness guarantees for anytime-safe constrained optimization under disturbances.</li>
+      </ul>
+      <p class="links-inline"><a href="TFG_GallardoSaenzJavier.pdf">PDF</a></p>
+    </article>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <article class="project">
+      <h3><a href="https://github.com/javier-gallardo-saenz/e3nn.jl/tree/feature/irreps_array">e3nn.jl: <code>IrrepsArray</code></a></h3>
+      <p class="stack">Julia · E(3)-equivariant neural networks</p>
+      <p>Contributions to <a href="https://github.com/Dsantra92/e3nn.jl">e3nn.jl</a>, a Julia port of e3nn. I
+        implemented the <code>IrrepsArray</code> data structure, which pairs feature arrays with their O(3)
+        irreducible-representation layout. It supports construction from irreps strings, chunking by irrep, type
+        conversion and zero-extension, following the core abstraction of e3nn-jax.</p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/javier-gallardo-saenz/Hub_Laplacian_GNNs">Hub-Laplacian operators for directional GNNs</a></h3>
+      <p class="stack">Python · PyTorch Geometric · QM9 · with A. Carraro and I. Heijmink (TU Delft)</p>
+      <p>Integrated degree-biased graph shift operators, fixed or with learnable bias <em>α</em>, into polynomial-filter
+        GCNNs and Graph Anisotropic Diffusion for molecular property regression on QM9. With a well-tuned <em>α</em>
+        they consistently beat standard baselines, which we link to larger spectral gaps.
+        <a href="https://github.com/javier-gallardo-saenz/Hub_Laplacian_GNNs/blob/main/Report_GNN_project.pdf">Report</a>.</p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/javier-gallardo-saenz/muFE-in-LJFluid">Chemical potential of a dense Lennard-Jones fluid</a></h3>
+      <p class="stack">Julia · molecular dynamics · free-energy methods</p>
+      <p>Alchemical particle insertion with a soft-core potential, using Langevin NVT dynamics with a BAOAB integrator.
+        It compares Widom insertion, thermodynamic integration, FEP, BAR and MBAR from the gas phase up to
+        high-density fluids, with uncertainty estimates and tail corrections.
+        <a href="https://github.com/javier-gallardo-saenz/muFE-in-LJFluid/blob/main/Project_Report.pdf">Report</a>.</p>
+    </article>
+
+    <article class="project">
+      <h3><a href="https://github.com/javier-gallardo-saenz/Complex_Networks_Project">Opinion inference on complex networks</a></h3>
+      <p class="stack">Python · NetworkX</p>
+      <p>Simulates opinion dynamics on random graph models (Erdős–Rényi, Barabási–Albert, configuration, stochastic
+        block and hierarchical models) and compares methods for inferring a node's state from partial, local
+        observations of its neighborhood.</p>
+    </article>
+  </section>
+
+  <section id="experience">
+    <h2>Research experience</h2>
+    <dl class="timeline">
+      <dt>Jan – Aug 2026</dt>
+      <dd>
+        <p class="title">AstraZeneca, Molecular AI · Research intern</p>
+        <p>Hierarchical, MD-assisted ML for modified siRNA activity prediction. Built a dataset of MD-derived
+          properties for ~6,000 modified siRNA trimers (MSc thesis).</p>
+      </dd>
+
+      <dt>Jun – Jul 2024</dt>
+      <dd>
+        <p class="title">IRB Barcelona, Modesto Orozco Lab · Research intern</p>
+        <p>Flow matching for tetranucleotide dynamics; reinforcement learning and statistical physics for force-field
+          parametrization.</p>
+      </dd>
+
+      <dt>Sep 2023 – May 2024</dt>
+      <dd>
+        <p class="title">UC San Diego, Jorge Cortés Lab · Research intern</p>
+        <p>Stability and safety guarantees for Safe Gradient and Monotone Flow algorithms; robustness of dynamical
+          systems (BSc thesis).</p>
+      </dd>
+
+      <dt>Jun – Jul 2023</dt>
+      <dd>
+        <p class="title">Nostrum Biodiscovery, AI Department · Research intern</p>
+        <p>Guided diffusion models for protein–ligand docking, which led to the ICLR 2024 workshop paper and the
+          <em>Nature Machine Intelligence</em> article.</p>
+      </dd>
+
+      <dt>Jul – Sep 2022</dt>
+      <dd>
+        <p class="title">IREC · Research intern</p>
+        <p>Peer-to-peer energy market design using game-theoretic fairness (RECOMMIT project).</p>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <dl class="timeline">
+      <dt>2026 – present</dt>
+      <dd>
+        <p class="title">PhD in Mathematics · University of British Columbia</p>
+        <p>Supervisor: Christoph Ortner. Four Year Doctoral Fellowship (4YF), awarded to top incoming PhD students.</p>
+      </dd>
+
+      <dt>2024 – 2026</dt>
+      <dd>
+        <p class="title">MSc, COSSE: Computer Simulations for Science and Engineering · TU Delft &amp; KTH</p>
+        <p>Joint international master's programme in applied mathematics and scientific computing.</p>
+      </dd>
+
+      <dt>2019 – 2024</dt>
+      <dd>
+        <p class="title">BSc in Mathematics &amp; BSc in Engineering Physics · CFIS, Universitat Politècnica de Catalunya</p>
+        <p>Selective dual-degree programme. Honorable mentions in Quantum Physics, Solid State Physics and Biophysics II.</p>
+      </dd>
+    </dl>
+  </section>
+
+  <section id="skills">
+    <h2>Skills &amp; more</h2>
+    <dl class="facts">
+      <dt>Programming</dt>
+      <dd>Python (PyTorch, PyTorch Geometric, JAX), Julia, C++</dd>
+      <dt>Simulation</dt>
+      <dd>GROMACS, OpenMM, AMBER force fields, RDKit</dd>
+      <dt>Talks</dt>
+      <dd><em>Set Input-to-State Stability</em>, MURO Lab seminar, UC San Diego, 2024</dd>
+      <dt>Selected honors</dt>
+      <dd>UBC Four Year Doctoral Fellowship (2026) · Beca Ortega y Gasset, top 100 high-school students in Spain (2019)</dd>
+      <dt>Languages</dt>
+      <dd>Spanish (native), Catalan (fluent), English (fluent; Cambridge C1, scored at C2), French</dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Javier Gallardo Sáenz · <a href="mailto:jgallardosaenz@gmail.com">jgallardosaenz@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
