@@ -57,8 +57,7 @@ code {
 
 /* Header */
 .site-header {
-  padding: 0 0 1.5rem;
-  border-bottom: 1px solid var(--rule);
+  padding: 0 0 1.75rem;
 }
 .banner {
   position: relative;
@@ -118,7 +117,7 @@ code {
   margin: 0.75rem 0 0;
   font-size: 1.2rem;
 }
-.links, .toc {
+.links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
@@ -127,18 +126,59 @@ code {
 }
 .links { margin-top: 1.25rem; }
 .links a { font-weight: 500; }
-.toc {
-  margin-top: 2rem;
-  padding-top: 1rem;
+
+/* Section tabs */
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
   border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
-.toc a { color: var(--muted); text-decoration: none; }
-.toc a:hover { color: var(--accent); }
+.tablist {
+  display: flex;
+  gap: 0 1.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+.tablist::-webkit-scrollbar { display: none; }
+.tablist a {
+  flex: none;
+  padding: 0.8rem 0 calc(0.8rem - 2px);
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tablist a:hover { color: var(--ink); }
+.tablist a[aria-selected="true"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 500;
+}
+.tablist a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 3px;
+}
 
 /* Sections */
 section {
   padding: 2.5rem 0 0.5rem;
-  scroll-margin-top: 1rem;
+  scroll-margin-top: 3.5rem;
+}
+section[hidden] { display: none; }
+.has-tabs main { min-height: 65vh; }
+.has-tabs section { animation: panel-in 0.18s ease-out; }
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-tabs section { animation: none; }
 }
 section h2 {
   margin: 0 0 1rem;
@@ -287,7 +327,8 @@ section p { margin: 0 0 1rem; }
 }
 
 @media print {
-  .toc { display: none; }
+  .tabs { display: none; }
+  section[hidden] { display: block; }
   body { background: #fff; color: #000; }
   .card { border-color: #ccc; }
 }

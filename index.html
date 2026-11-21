@@ -39,17 +39,23 @@
       <a href="https://www.linkedin.com/in/javier-gallardo-s%C3%A1enz-953b8a258/">LinkedIn</a>
       <a href="CV_GallardoSaenzJavier.pdf">CV (PDF)</a>
     </nav>
-    <nav class="toc" aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#publications">Publications</a>
-      <a href="#theses">Theses</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-    </nav>
   </div>
 </header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <div class="tablist">
+      <a href="#about" id="tab-about">About</a>
+      <a href="#news" id="tab-news">News</a>
+      <a href="#publications" id="tab-publications">Publications</a>
+      <a href="#theses" id="tab-theses">Theses</a>
+      <a href="#projects" id="tab-projects">Projects</a>
+      <a href="#experience" id="tab-experience">Experience</a>
+      <a href="#education" id="tab-education">Education</a>
+      <a href="#skills" id="tab-skills">Skills</a>
+    </div>
+  </div>
+</nav>
 
 <main class="wrap">
 
@@ -187,6 +193,20 @@
     <h2>Projects</h2>
 
     <article class="project">
+      <h3><a href="https://github.com/javier-gallardo-saenz/e-medoids">e-medoids: mini-batch k-medoids for arbitrary dissimilarities</a></h3>
+      <p class="stack">Python · Numba · clustering · molecular fingerprints</p>
+      <p>A k-medoids counterpart of <a href="https://arxiv.org/abs/2611.09501">e-means</a> (Bessa et al., 2026). It
+        works with any dissimilarity and never builds the <em>n</em>&thinsp;×&thinsp;<em>n</em> distance matrix that
+        PAM-type methods need, which is about 250&nbsp;GB for 250,000 points. Each cluster keeps a small pool of
+        candidate medoids whose costs are estimated on mini-batches with exponential moving averages and a
+        cosine-annealed step size, and the medoid is the cheapest candidate. PAM-style swaps move medoids between
+        clusters, and a probation period protects new candidates until they have been scored on enough batches. On
+        molecular fingerprints with the Tanimoto distance, and on synthetic benchmarks, it comes within about 1% of
+        FasterPAM's loss at <em>k</em>&nbsp;=&nbsp;100 while running 100–300× faster. It clusters all 250,000 ZINC
+        molecules in under a second, and it reaches a lower loss than OneBatchPAM at default settings.</p>
+    </article>
+
+    <article class="project">
       <h3><a href="https://github.com/javier-gallardo-saenz/e3nn.jl/tree/feature/irreps_array">e3nn.jl: <code>IrrepsArray</code></a></h3>
       <p class="stack">Julia · E(3)-equivariant neural networks</p>
       <p>Contributions to <a href="https://github.com/Dsantra92/e3nn.jl">e3nn.jl</a>, a Julia port of e3nn. I
@@ -313,6 +333,78 @@
     <p>© 2026 Javier Gallardo Sáenz · <a href="mailto:jgallardosaenz@gmail.com">jgallardosaenz@gmail.com</a></p>
   </div>
 </footer>
+
+<script>
+  // Tabbed sections. Without JavaScript every section stays visible and the tabs act as anchor links.
+  (function () {
+    var nav = document.querySelector('.tabs');
+    var list = nav.querySelector('.tablist');
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('a'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.hash.slice(1)); });
+
+    document.documentElement.classList.add('has-tabs');
+    list.setAttribute('role', 'tablist');
+    tabs.forEach(function (tab, i) {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('role', 'tabpanel');
+      panels[i].setAttribute('aria-labelledby', tab.id);
+    });
+
+    function indexOf(id) {
+      for (var i = 0; i < panels.length; i++) if (panels[i].id === id) return i;
+      return -1;
+    }
+
+    function show(i, opts) {
+      opts = opts || {};
+      tabs.forEach(function (tab, j) {
+        var on = i === j;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      if (opts.focus) tabs[i].focus();
+      if (opts.updateUrl) {
+        var hash = i === 0 ? location.pathname + location.search : '#' + panels[i].id;
+        history.replaceState(null, '', hash);
+      }
+      // If the reader has scrolled past the tab bar, bring the new panel's top into view.
+      if (opts.scroll) {
+        var top = nav.getBoundingClientRect().top + window.pageYOffset;
+        if (window.pageYOffset > top) window.scrollTo(0, top);
+      }
+      if (tabs[i].scrollIntoView && list.scrollWidth > list.clientWidth) {
+        tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function (e) {
+        e.preventDefault();
+        show(i, { updateUrl: true, scroll: true });
+      });
+      tab.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        if (next !== null) {
+          e.preventDefault();
+          show(next, { focus: true, updateUrl: true });
+        }
+      });
+    });
+
+    function fromHash() {
+      var i = indexOf(location.hash.slice(1));
+      show(i < 0 ? 0 : i);
+    }
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+  })();
+</script>
 
 </body>
 </html>
